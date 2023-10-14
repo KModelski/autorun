@@ -1,0 +1,22 @@
+<ng-container *ngIf="user$ | async as user">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="card bg-light">
+          <div class="card-header">{{ user.name }}</div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">City: {{ user.address.city }}</li>
+            <li class="list-group-item">Zip Code: {{ user.address.zipcode }}</li>
+            <li class="list-group-item">Street: {{ user.address.street }}</li>
+            <li class="list-group-item">Suite: {{ user.address.suite }}</li>
+            <li class="list-group-item">Phone: {{ user.phone }}</li>
+            <li class="list-group-item">Website: {{ user.website }}</li>
+          </ul>
+          <div class="card-body">
+            <button class="btn btn-primary" (click)="goBack()">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

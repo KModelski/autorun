@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row g-3">
+    <ng-container *ngFor="let user of users$ | async">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <div class="card bg-light" (click)="goToDetails(user.id)">
+          <div class="card-header">{{ user.name }}</div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Username: {{ user.username }}</li>
+            <li class="list-group-item">Email: {{ user.email }}</li>
+          </ul>
+          <div class="card-body">
+            <button class="btn btn-primary">Details</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<router-outlet></router-outlet>

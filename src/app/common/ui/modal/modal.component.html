@@ -1,0 +1,42 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+    <h4 class="modal-title">Edit user</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('close')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group mb-2">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name" class="w-100">
+      </mat-form-field>
+    </div>
+    <div class="form-group mb-2">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Username</mat-label>
+        <input type="text" matInput formControlName="username" class="w-100">
+        <mat-error *ngIf="usernameFormControl.errors?.['required']">
+          Username is required.
+        </mat-error>
+        <mat-error *ngIf="usernameFormControl.errors?.['minlength']">
+          Username is too short.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" class="w-100">
+        <mat-error *ngIf="emailFormControl.errors?.['required']">
+          Email address is required.
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.errors?.['email']">
+          Email address is invalid.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="reset()">Cancel</button>
+    <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">Save</button>
+  </div>
+</form>
